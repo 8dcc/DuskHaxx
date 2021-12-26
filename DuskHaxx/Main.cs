@@ -20,14 +20,14 @@ namespace DuskHaxx
         public void OnGUI()
         {
             // Watermark
-            NullsRenderer.DrawWatermark(new Vector2(5f, 5f), new Vector2(110f, 20f), "Null's dusk mod", false);
+            NullsRenderer.DrawWatermark(new Vector2(6f, 5f), "Null's dusk mod", false);
 
             // Menu
             if (Input.GetKey(KeyCode.Insert) || always_display_menu)
             {
                 // Menu background
                 Vector2 menu_pos = new Vector2(5f, 33f);
-                Vector2 menu_size = new Vector2(200f, 20f * menu_entries + 6f);  // 20 height per element
+                Vector2 menu_size = new Vector2(200f, 18f * menu_entries + 6f);  // 20 height per element
                 if (menu_box)  // Ugly in-game
                 {
                     ExtRender.DrawBox(menu_pos, menu_size,  new Color(0.22f, 0.22f, 0.25f, 0.8f));  // Background
@@ -38,9 +38,9 @@ namespace DuskHaxx
                 // Menu entries (without state)
                 for (int n = 0; n < menu_entries; n++)
                 {
-                    ExtRender.DrawString(new Vector2(menu_pos.x + 4f, menu_pos.y + 20 * n), menu_entries_text[n], Color.white, false);
+                    ExtRender.DrawString(new Vector2(menu_pos.x + 3f, menu_pos.y + 18 * n), menu_entries_text[n], Color.white, false);
                 }
-
+                
                 // Hack state
                 if (aimbot_bool)
                 {

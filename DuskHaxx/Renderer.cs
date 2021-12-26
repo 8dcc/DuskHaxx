@@ -8,11 +8,35 @@ namespace DuskHaxx
 		{
 			if (background)
 			{
-				Rect watermark_background = new Rect(position[0] - 5f, position[1] - 3f, size[0] + 10f, size[1] + 6f);
-				GUI.Box(watermark_background, "");
+				Vector2 background_pos = new Vector2(position.x - 2f, position.y - 1f);
+				Vector2 background_size = new Vector2(size.x + 17f, size.y + 1f);
+				ExtRender.DrawBox(background_pos, background_size, new Color(0.22f, 0.22f, 0.23f, 0.8f));  // Background
+				ExtRender.DrawBoxOutline(background_pos, background_size.x, background_size.y, new Color(0.95f, 0f, 0f, 0.95f), 1f);
 			}
-			Rect text_pos = new Rect(position, size);
-			GUI.Label(text_pos, label);
+			if (background)
+            {
+				ExtRender.DrawString(position, label, new Color(0.95f, 0.95f, 0.95f), false);
+			} else {
+				ExtRender.DrawString(position, label, new Color(0.95f, 0f, 0f, 0.95f), false);
+			}
+			//GUI.Label(new Rect(position, size), label);
+		}
+		public static void DrawWatermark(Vector2 position, string label, bool background = true)
+		{
+			Vector2 size = new Vector2((float)label.Length * 6.4f + 1, 21f);
+			if (background)
+			{
+				Vector2 background_pos = new Vector2(position.x - 2f, position.y);
+				Vector2 background_size = new Vector2(size.x, size.y);
+				ExtRender.DrawBox(background_pos, background_size, new Color(0.22f, 0.22f, 0.23f, 0.8f));  // Background
+				ExtRender.DrawBoxOutline(background_pos, background_size.x, background_size.y, new Color(0.95f, 0f, 0f, 0.95f), 1f);
+			}
+			if (background)
+			{
+				ExtRender.DrawString(position, label, new Color(0.95f, 0.95f, 0.95f), false);
+			} else {
+				ExtRender.DrawString(position, label, new Color(0.95f, 0f, 0f, 0.95f), false);
+			}
 		}
 	}
 
