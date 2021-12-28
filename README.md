@@ -3,6 +3,8 @@
 
 Did it because I was bored.
 
+Based on [CometVTwo](https://github.com/TheReal3rd/CometVTwo).
+
 ### Features
 - Rotate camera (Just a `myMouseLook` test)
 - Unlimited ammo
