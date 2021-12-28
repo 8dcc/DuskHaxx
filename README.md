@@ -1,5 +1,5 @@
-# Dusk cheat
-**A useless cheat for singleplayer dusk.**
+# DuskHaxx
+**A useless mod for singleplayer dusk.**
 
 Did it because I was bored.
 
