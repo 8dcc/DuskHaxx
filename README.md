@@ -7,6 +7,7 @@ Based on [CometVTwo](https://github.com/TheReal3rd/CometVTwo).
 
 ### Features
 - Godmode.
+- Aimbot (See todo).
 - Rapid fire.
 - Unlimited ammo.
 - Enemy tracers.
@@ -33,4 +34,4 @@ Method name  | `Init`
 
 ### Todo
 - Fix tracers depending on FOV.
-- Aimbot (Fix tracers first).
+- Change movement direction with the aimbot.
