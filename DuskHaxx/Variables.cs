@@ -25,9 +25,4 @@ namespace DuskHaxx.variables
         public static bool tracer_bool = true;
         public static bool player_pos_bool = true;
     }
-
-    class ImportantVariables
-    {
-        public static MyMouseLook myMouseLook = (MyMouseLook)GameObject.Find("MainCamera").GetComponent(typeof(MyMouseLook));
-    }
 }

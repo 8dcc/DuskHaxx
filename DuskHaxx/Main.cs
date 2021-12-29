@@ -72,6 +72,7 @@ namespace DuskHaxx
                 Cursor.lockState = variables.Menu.old_cursorlockmode;
                 GameObject.Find("MainCamera").GetComponent<MyMouseLook>().enabled = variables.Menu.old_maincamera_mouselook;
 
+                
                 MyMouseLook myMouseLook = (MyMouseLook)GameObject.Find("MainCamera").GetComponent(typeof(MyMouseLook));
                 myMouseLook.xRotation = LocalVariables.old_xrotation;
                 myMouseLook.yRotation = LocalVariables.old_yrotation;
