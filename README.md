@@ -27,3 +27,4 @@ Method name  | `Init`
 ### Screenshots
 ![Screenshot 1](images/screenshot1.png)
 ![Screenshot 2](images/screenshot2.jpg)
+![Screenshot 3](images/screenshot3.jpg)
