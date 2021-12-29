@@ -2,6 +2,7 @@
 
 namespace DuskHaxx
 {
+	// Made it myself cuz im cool as fuck
 	public class NullsRenderer : MonoBehaviour
 	{
 		public static void DrawWatermark(Vector2 position, Vector2 size, string label, bool background = true)
@@ -12,30 +13,63 @@ namespace DuskHaxx
 				Vector2 background_size = new Vector2(size.x + 17f, size.y + 1f);
 				ExtRender.DrawBox(background_pos, background_size, new Color(0.22f, 0.22f, 0.23f, 0.8f));  // Background
 				ExtRender.DrawBoxOutline(background_pos, background_size.x, background_size.y, new Color(0.95f, 0f, 0f, 0.95f), 1f);
-			}
-			if (background)
-            {
+
 				ExtRender.DrawString(position, label, new Color(0.95f, 0.95f, 0.95f), false);
-			} else {
+			}
+			else
+			{
 				ExtRender.DrawString(position, label, new Color(0.95f, 0f, 0f, 0.95f), false);
 			}
-			//GUI.Label(new Rect(position, size), label);
 		}
 		public static void DrawWatermark(Vector2 position, string label, bool background = true)
 		{
-			Vector2 size = new Vector2((float)label.Length * 6.4f + 1, 21f);
+			Vector2 size = new Vector2((float)label.Length * 6.3f, 21f);
 			if (background)
 			{
 				Vector2 background_pos = new Vector2(position.x - 2f, position.y);
 				Vector2 background_size = new Vector2(size.x, size.y);
 				ExtRender.DrawBox(background_pos, background_size, new Color(0.22f, 0.22f, 0.23f, 0.8f));  // Background
 				ExtRender.DrawBoxOutline(background_pos, background_size.x, background_size.y, new Color(0.95f, 0f, 0f, 0.95f), 1f);
-			}
-			if (background)
-			{
+
 				ExtRender.DrawString(position, label, new Color(0.95f, 0.95f, 0.95f), false);
-			} else {
+			}
+			else
+			{
 				ExtRender.DrawString(position, label, new Color(0.95f, 0f, 0f, 0.95f), false);
+			}
+		}
+		public static void DrawMenuBoolState(int index, Vector2 menu_pos, Vector2 menu_size, bool state)
+        {
+			if (state)
+			{
+				ExtRender.DrawString(new Vector2(menu_pos.x + menu_size.x - 23f, menu_pos.y + 18 * index), "ON", Color.green, false);
+			} else {
+				ExtRender.DrawString(new Vector2(menu_pos.x + menu_size.x - 30f, menu_pos.y + 18 * index), "OFF", Color.red, false);
+			}
+		}
+		public static void DrawMenuBackground(bool enabled, Vector2 position, Vector2 size, Color background_color, Color border_color, float border_thickness = 1f )
+        {
+			if (enabled)
+			{
+				ExtRender.DrawBox(position, size, background_color);  // Background
+				ExtRender.DrawBoxOutline(position, size.x, size.y, border_color, border_thickness);  // Border
+			}
+		}
+		public static void DrawTracer(Vector2 w2s_target, Color colour, float thickness = 1f, int tracer_origin = 1)
+		{
+			switch (tracer_origin)
+			{
+				case 0: // Top (ur a monster)
+					ExtRender.DrawLine(new Vector2((float)(Screen.width / 2), 0f), new Vector2(w2s_target.x, (float)Screen.height - w2s_target.y), colour, thickness);
+					break;
+				case 1: // Crosshair
+					ExtRender.DrawLine(new Vector2((float)(Screen.width / 2), (float)(Screen.height / 2)), new Vector2(w2s_target.x, (float)Screen.height - w2s_target.y), colour, thickness);
+					break;
+				case 2: // Bottom
+					ExtRender.DrawLine(new Vector2((float)(Screen.width / 2), (float)(Screen.height)), new Vector2(w2s_target.x, (float)Screen.height - w2s_target.y), colour, thickness);
+					break;
+				default:
+					break;
 			}
 		}
 	}

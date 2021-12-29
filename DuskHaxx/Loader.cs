@@ -8,9 +8,12 @@ namespace DuskHaxx
         {
             Loader.Load = new GameObject();
             Loader.Load.AddComponent<Main>();
+            Loader.Load.AddComponent<Godmode>();
             Loader.Load.AddComponent<Aimbot>();
             Loader.Load.AddComponent<InfAmmo>();
             Loader.Load.AddComponent<RapidFire>();
+            Loader.Load.AddComponent<Tracers>();
+            Loader.Load.AddComponent<DebugPlayerPos>();
             UnityEngine.Object.DontDestroyOnLoad(Loader.Load);
         }
 

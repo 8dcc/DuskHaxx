@@ -3,16 +3,18 @@ using UnityEngine;
 
 namespace DuskHaxx
 {
-    class Aimbot : MonoBehaviour
+    class Tracers : MonoBehaviour
     {
         class LocalVariables
         {
+            public static Vector2 screen_center = new Vector2((float)(Screen.width / 2), (float)(Screen.height / 2));
             public static List<Vector3> enemyPos = new List<Vector3>();
+            public static Color colour = Color.red;
         }
 
         public void Update()
         {
-            if (variables.CheatState.aimbot_bool)
+            if (variables.CheatState.tracer_bool)
             {
                 LocalVariables.enemyPos.Clear();
 
@@ -23,7 +25,7 @@ namespace DuskHaxx
                     anime_feet.x = enemy.transform.position.x;
                     anime_feet.y = enemy.transform.position.y - 2.8f;
                     anime_feet.z = enemy.transform.position.z - 30f + Mathf.Sqrt(enemy.transform.position.x * enemy.transform.position.x + enemy.transform.position.y * enemy.transform.position.y);
-
+                    //TODO THIS SHIT ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                     LocalVariables.enemyPos.Add(anime_feet);
                 }
             }
@@ -31,11 +33,20 @@ namespace DuskHaxx
 
         public void OnGUI()
         {
-            if (!variables.Menu.menu_open && variables.CheatState.aimbot_bool && Input.GetKey(KeyCode.LeftAlt))
+            if (variables.CheatState.tracer_bool && LocalVariables.enemyPos.Count > 0)
             {
-                variables.ImportantVariables.myMouseLook.transform.LookAt(LocalVariables.enemyPos[1]);
-                //variables.ImportantVariables.myMouseLook.yRotation++;
-            }
-        }
-    }
+                var camera = FindObjectOfType<Camera>();
+
+                foreach (var target in LocalVariables.enemyPos)
+                {
+                    Vector3 w2s_enemy = camera.WorldToScreenPoint(target);
+
+                    if (w2s_enemy.z > -1)
+                    {
+                        NullsRenderer.DrawTracer(w2s_enemy, LocalVariables.colour, 1f, 2);
+                    }
+                }
+            }  // if option is disabled or if there is only one target
+        }  // end of ongui
+    }  // end of tracer class
 }
