@@ -10,12 +10,13 @@ Based on [CometVTwo](https://github.com/TheReal3rd/CometVTwo).
 - Aimbot (See todo).
 - Rapid fire.
 - Unlimited ammo.
-- Enemy tracers.
+- Enemy ESP (tracers, base and 3d box).
 - Debug player position.
 
 ### How to use
 - Hold `Insert` to bring mouse and show the menu (depending on the settings).
 - `Insert` + `Number` to toggle options.
+- `Insert` + `k` to toggle console (Not recommended).
 - `Delete` to exit.
 
 ### How to inject
@@ -31,7 +32,7 @@ Method name  | `Init`
 ![Screenshot 1](images/screenshot4.png)
 ![Screenshot 2](images/screenshot2.jpg)
 ![Screenshot 3](images/screenshot3.jpg)
+![Screenshot 4 (Box ESP and tracers)](images/screenshot5.jpg)
 
 ### Todo
-- Fix tracers depending on FOV.
 - Change movement direction with the aimbot.
