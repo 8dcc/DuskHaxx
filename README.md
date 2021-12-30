@@ -12,6 +12,7 @@ Based on [CometVTwo](https://github.com/TheReal3rd/CometVTwo).
 - Unlimited ammo.
 - Enemy ESP (tracers, base and 3d box).
 - Debug player position.
+- Console (Not recommended yet).
 
 ### How to use
 - Hold `Insert` to bring mouse and show the menu (depending on the settings).
