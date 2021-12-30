@@ -20,10 +20,10 @@ namespace DuskHaxx
             {
                 LocalVariables.enemyPos.Clear();
 
-                foreach (EnemyIndicatorObjectScript enemy in UnityEngine.Object.FindObjectsOfType(typeof(EnemyIndicatorObjectScript)) as EnemyIndicatorObjectScript[])
+                foreach (BasicAIScript enemy in UnityEngine.Object.FindObjectsOfType(typeof(BasicAIScript)) as BasicAIScript[])
                 {
-                    // Apply and offset but its kinda trash if you change the fov
-                    Vector3 anime_feet = new Vector3(enemy.transform.position.x, enemy.transform.position.y - 2.8f, enemy.transform.position.z);
+                    // Apply offset
+                    Vector3 anime_feet = new Vector3(enemy.transform.position.x, enemy.transform.position.y - 1.15f, enemy.transform.position.z);
                     LocalVariables.enemyPos.Add(anime_feet);
                 }
             }
@@ -48,7 +48,7 @@ namespace DuskHaxx
                     
                     if (w2s_enemy.z > -1)
                     {
-                        NullsRenderer.DrawTracer(new Vector2(w2s_enemy.x, w2s_enemy.y), LocalVariables.colour, 1f, 2);
+                        NullsRenderer.DrawTracer(new Vector2(w2s_enemy.x, w2s_enemy.y), LocalVariables.colour, 1.5f, 2);
                         // Draw tracer X base
                         if (variables.CheatSettings.draw_tracer_base || variables.CheatSettings.draw_tracer_box_3d)
                         {
@@ -57,6 +57,7 @@ namespace DuskHaxx
                             Vector3 w2s_enemy_base_z1 = camera.WorldToScreenPoint(new Vector3(target.x, target.y, target.z - 1f));
                             Vector3 w2s_enemy_base_z2 = camera.WorldToScreenPoint(new Vector3(target.x, target.y, target.z + 1f));
 
+                            // Check if the x is in the screen
                             if (w2s_enemy_base_x1.z > -1 && w2s_enemy_base_z1.z > -1 && w2s_enemy_base_x2.z > -1 && w2s_enemy_base_z2.z > -1)
                             {
                                 ExtRender.DrawLine(new Vector2(w2s_enemy_base_x1.x, (float)Screen.height - w2s_enemy_base_x1.y),
