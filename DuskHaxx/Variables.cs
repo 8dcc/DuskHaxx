@@ -6,12 +6,12 @@ namespace DuskHaxx.variables
     class Menu
     {
         // Menu settings and default states
-        public static string[] menu_entries_text = { "1. Godmode", "2. Aimbot (Test)", "3. Rapid fire", "4. Unlimited ammo", "5. Enemy ESP", "0. Position debug" };
+        public static string[] menu_entries_text = { "1. Godmode", "2. Aimbot (Test)", "3. Rapid fire", "4. Unlimited ammo", "5. Enemy ESP", "9. Position debug", "0. Fov debug" };
         public static int menu_entries = menu_entries_text.Length;
 
         public static bool menu_open = false;
         public static bool always_display_menu = false, menu_box = true;
-        public static bool old_cursor_visible, old_maincamera_mouselook;
+        public static bool old_maincamera_mouselook;
         public static CursorLockMode old_cursorlockmode;
     }
 
@@ -24,12 +24,30 @@ namespace DuskHaxx.variables
         public static bool rapidfire_bool = false;
         public static bool tracer_bool = true;
         public static bool player_pos_bool = true;
+        public static bool player_fov_bool = false;
     }
 
     class CheatSettings
     {
+        // Aimbot
         public static int aimbot_fov = 180;
         public static KeyCode aimbot_key1 = KeyCode.Mouse1;
         public static KeyCode aimbot_key2 = KeyCode.Mouse3;
+
+        // Tracers
+        public static bool draw_tracer_base = true;
+        public static float tracer_base_thickness = 1.5f;
+        public static bool draw_tracer_box_3d = true;
+        public static float tracer_box_3d_thickness = 1f;
+    }
+
+    class Console
+    {
+        // Settings
+        public static Vector2 console_size = new Vector2(500f, 22f);
+        public static Vector2 console_position = new Vector2((float)(Screen.width / 2 - console_size.x/2), (float)(Screen.height - 130f));
+        public static bool console_background = false;
+
+        public static bool show_console = false;
     }
 }

@@ -11,7 +11,7 @@ namespace DuskHaxx
             public static List<Vector3> enemyPos = new List<Vector3>();
             public static Color colour = Color.red;
 
-            // GET FOV (float) -----> ((GameMenuButtonsScript)GameObject.Find("DasMenu").GetComponent(typeof(GameMenuButtonsScript))).LoadConfigFloat("fov");
+            public static bool old_fov_bool, aux_first_time = true;
         }
 
         public void Update()
@@ -23,11 +23,7 @@ namespace DuskHaxx
                 foreach (EnemyIndicatorObjectScript enemy in UnityEngine.Object.FindObjectsOfType(typeof(EnemyIndicatorObjectScript)) as EnemyIndicatorObjectScript[])
                 {
                     // Apply and offset but its kinda trash if you change the fov
-                    Vector3 anime_feet;
-                    anime_feet.x = enemy.transform.position.x;
-                    anime_feet.y = enemy.transform.position.y - 2.75f;
-                    anime_feet.z = enemy.transform.position.z;
-                    //TODO THIS SHIT ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    Vector3 anime_feet = new Vector3(enemy.transform.position.x, enemy.transform.position.y - 2.8f, enemy.transform.position.z);
                     LocalVariables.enemyPos.Add(anime_feet);
                 }
             }
@@ -37,20 +33,73 @@ namespace DuskHaxx
         {
             if (variables.CheatState.tracer_bool && LocalVariables.enemyPos.Count > 0)
             {
-                Camera camera = FindObjectOfType<Camera>();
+                if (LocalVariables.aux_first_time)
+                {
+                    LocalVariables.old_fov_bool = variables.CheatState.player_fov_bool;
+                    variables.CheatState.player_fov_bool = true;
+                    LocalVariables.aux_first_time = false;
+                }
 
+                // Get the camera and draw the tracer
+                Camera camera = FindObjectOfType<Camera>();
                 foreach (Vector3 target in LocalVariables.enemyPos)
                 {
                     Vector3 w2s_enemy = camera.WorldToScreenPoint(target);
-
+                    
                     if (w2s_enemy.z > -1)
                     {
                         NullsRenderer.DrawTracer(new Vector2(w2s_enemy.x, w2s_enemy.y), LocalVariables.colour, 1f, 2);
-                        //ExtRender.DrawLine(new Vector2(w2s_enemy.x, w2s_enemy.y - 20f), new Vector2(w2s_enemy.x, w2s_enemy.y + 20f), LocalVariables.colour, 1f);
-                        //ExtRender.DrawBoxOutline(w2s_enemy_box_center, 70f, 140f, LocalVariables.colour, 1f);
-                    }
-                }
-            }  // if option is disabled or if there is only one target
-        }  // end of ongui
-    }  // end of tracer class
+                        // Draw tracer X base
+                        if (variables.CheatSettings.draw_tracer_base || variables.CheatSettings.draw_tracer_box_3d)
+                        {
+                            Vector3 w2s_enemy_base_x1 = camera.WorldToScreenPoint(new Vector3(target.x - 1f, target.y, target.z));
+                            Vector3 w2s_enemy_base_x2 = camera.WorldToScreenPoint(new Vector3(target.x + 1f, target.y, target.z));
+                            Vector3 w2s_enemy_base_z1 = camera.WorldToScreenPoint(new Vector3(target.x, target.y, target.z - 1f));
+                            Vector3 w2s_enemy_base_z2 = camera.WorldToScreenPoint(new Vector3(target.x, target.y, target.z + 1f));
+
+                            if (w2s_enemy_base_x1.z > -1 && w2s_enemy_base_z1.z > -1 && w2s_enemy_base_x2.z > -1 && w2s_enemy_base_z2.z > -1)
+                            {
+                                ExtRender.DrawLine(new Vector2(w2s_enemy_base_x1.x, (float)Screen.height - w2s_enemy_base_x1.y),
+                                    new Vector2(w2s_enemy_base_x2.x, (float)Screen.height - w2s_enemy_base_x2.y), LocalVariables.colour, variables.CheatSettings.tracer_base_thickness);
+                                ExtRender.DrawLine(new Vector2(w2s_enemy_base_z1.x, (float)Screen.height - w2s_enemy_base_z1.y),
+                                    new Vector2(w2s_enemy_base_z2.x, (float)Screen.height - w2s_enemy_base_z2.y), LocalVariables.colour, variables.CheatSettings.tracer_base_thickness);
+
+                                // Draw "tracer" box 3d
+                                if (variables.CheatSettings.draw_tracer_box_3d)
+                                {
+                                    Vector3 w2s_enemy_top_x1 = camera.WorldToScreenPoint(new Vector3(target.x - 1f, target.y + 2.6f, target.z));
+                                    Vector3 w2s_enemy_top_x2 = camera.WorldToScreenPoint(new Vector3(target.x + 1f, target.y + 2.6f, target.z));
+                                    Vector3 w2s_enemy_top_z1 = camera.WorldToScreenPoint(new Vector3(target.x, target.y + 2.6f, target.z - 1f));
+                                    Vector3 w2s_enemy_top_z2 = camera.WorldToScreenPoint(new Vector3(target.x, target.y + 2.6f, target.z + 1f));
+
+                                    if (w2s_enemy_top_x1.z > -1 && w2s_enemy_top_z1.z > -1 && w2s_enemy_top_x2.z > -1 && w2s_enemy_top_z2.z > -1)
+                                    {
+                                        // Upper X
+                                        ExtRender.DrawLine(new Vector2(w2s_enemy_top_x1.x, (float)Screen.height - w2s_enemy_top_x1.y),
+                                        new Vector2(w2s_enemy_top_x2.x, (float)Screen.height - w2s_enemy_top_x2.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
+                                        ExtRender.DrawLine(new Vector2(w2s_enemy_top_z1.x, (float)Screen.height - w2s_enemy_top_z1.y),
+                                            new Vector2(w2s_enemy_top_z2.x, (float)Screen.height - w2s_enemy_top_z2.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
+
+                                        // 3d box walls
+                                        ExtRender.DrawLine(new Vector2(w2s_enemy_base_x1.x, (float)Screen.height - w2s_enemy_base_x1.y),
+                                            new Vector2(w2s_enemy_top_x1.x, (float)Screen.height - w2s_enemy_top_x1.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
+                                        ExtRender.DrawLine(new Vector2(w2s_enemy_base_x2.x, (float)Screen.height - w2s_enemy_base_x2.y),
+                                            new Vector2(w2s_enemy_top_x2.x, (float)Screen.height - w2s_enemy_top_x2.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
+                                        ExtRender.DrawLine(new Vector2(w2s_enemy_base_z1.x, (float)Screen.height - w2s_enemy_base_z1.y),
+                                            new Vector2(w2s_enemy_top_z1.x, (float)Screen.height - w2s_enemy_top_z1.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
+                                        ExtRender.DrawLine(new Vector2(w2s_enemy_base_z2.x, (float)Screen.height - w2s_enemy_base_z2.y),
+                                            new Vector2(w2s_enemy_top_z2.x, (float)Screen.height - w2s_enemy_top_z2.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
+                                    }  // end of 3d box z check
+                                }  // end of 3d box
+                            }  // end of X base z check
+                        }  // end of X base check
+                    }  // end of w2s_enemy z check
+                }  // end of foreach enemy
+
+            } else if (!LocalVariables.aux_first_time) {  // if tracers are toggled off
+                variables.CheatState.player_fov_bool = LocalVariables.old_fov_bool;
+                LocalVariables.aux_first_time = true;
+            }
+        }
+    }
 }

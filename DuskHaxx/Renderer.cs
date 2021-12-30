@@ -32,9 +32,7 @@ namespace DuskHaxx
 				ExtRender.DrawBoxOutline(background_pos, background_size.x, background_size.y, new Color(0.95f, 0f, 0f, 0.95f), 1f);
 
 				ExtRender.DrawString(position, label, new Color(0.95f, 0.95f, 0.95f), false);
-			}
-			else
-			{
+			} else {
 				ExtRender.DrawString(position, label, new Color(0.95f, 0f, 0f, 0.95f), false);
 			}
 		}
@@ -49,7 +47,7 @@ namespace DuskHaxx
 		}
 		public static void DrawMenuBackground(bool enabled, Vector2 position, Vector2 size, Color background_color, Color border_color, float border_thickness = 1f )
         {
-			if (enabled)
+			if (enabled)  // This variables is used to check if you want to render the menu with background or not, NOT to check if you want to render the background
 			{
 				ExtRender.DrawBox(position, size, background_color);  // Background
 				ExtRender.DrawBoxOutline(position, size.x, size.y, border_color, border_thickness);  // Border

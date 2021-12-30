@@ -7,13 +7,22 @@ namespace DuskHaxx
         public static void Init()
         {
             Loader.Load = new GameObject();
+
+            // Main
             Loader.Load.AddComponent<Main>();
+            Loader.Load.AddComponent<Console>();
+
+            // Hackz
             Loader.Load.AddComponent<Godmode>();
             Loader.Load.AddComponent<Aimbot>();
-            Loader.Load.AddComponent<InfAmmo>();
             Loader.Load.AddComponent<RapidFire>();
+            Loader.Load.AddComponent<InfAmmo>();
             Loader.Load.AddComponent<Tracers>();
+
+            // Misc
             Loader.Load.AddComponent<DebugPlayerPos>();
+            Loader.Load.AddComponent<DebugPlayerFov>();
+
             UnityEngine.Object.DontDestroyOnLoad(Loader.Load);
         }
 

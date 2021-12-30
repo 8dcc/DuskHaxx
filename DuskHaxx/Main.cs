@@ -44,40 +44,47 @@ namespace DuskHaxx
                 NullsRenderer.DrawMenuBoolState(3, menu_pos, menu_size, variables.CheatState.unlimited_ammo_bool);
                 NullsRenderer.DrawMenuBoolState(4, menu_pos, menu_size, variables.CheatState.tracer_bool);
                 NullsRenderer.DrawMenuBoolState(5, menu_pos, menu_size, variables.CheatState.player_pos_bool);
+                NullsRenderer.DrawMenuBoolState(6, menu_pos, menu_size, variables.CheatState.player_fov_bool);
             }
 
             // Show cursor while holding insert
-            if (Input.GetKey(KeyCode.Insert))
+            if (Input.GetKey(KeyCode.Insert) || variables.Console.show_console)
             {
                 // First frame we press insert
                 if (!variables.Menu.menu_open)
                 {
+                    variables.Menu.old_cursorlockmode = Cursor.lockState;
+                    variables.Menu.old_maincamera_mouselook = GameObject.Find("MainCamera").GetComponent<MyMouseLook>().enabled;
+
+                    // Save old camera rotation
                     MyMouseLook myMouseLook = (MyMouseLook)GameObject.Find("MainCamera").GetComponent(typeof(MyMouseLook));
                     LocalVariables.old_xrotation = myMouseLook.xRotation;
                     LocalVariables.old_yrotation = myMouseLook.yRotation;
-
-                    variables.Menu.old_cursor_visible = Cursor.visible;
-                    variables.Menu.old_cursorlockmode = Cursor.lockState;
-                    variables.Menu.old_maincamera_mouselook = GameObject.Find("MainCamera").GetComponent<MyMouseLook>().enabled;
                 }
-                
-                Cursor.visible = false;
+
+                // Stop moving camera and release cursor
                 Cursor.lockState = CursorLockMode.None;
                 GameObject.Find("MainCamera").GetComponent<MyMouseLook>().enabled = false;
 
-                variables.Menu.menu_open = true;
-            // After we release it
-            } else if (variables.Menu.menu_open) {
-                Cursor.visible = variables.Menu.old_cursor_visible;
+                if (!variables.Menu.always_display_menu)
+                {
+                    variables.Menu.menu_open = true;
+                }
+                // After we release it
+            }
+            else if (variables.Menu.menu_open)
+            {
                 Cursor.lockState = variables.Menu.old_cursorlockmode;
                 GameObject.Find("MainCamera").GetComponent<MyMouseLook>().enabled = variables.Menu.old_maincamera_mouselook;
 
-                
+                // Restore old camera rotation
                 MyMouseLook myMouseLook = (MyMouseLook)GameObject.Find("MainCamera").GetComponent(typeof(MyMouseLook));
                 myMouseLook.xRotation = LocalVariables.old_xrotation;
                 myMouseLook.yRotation = LocalVariables.old_yrotation;
-
-                variables.Menu.menu_open = false;
+                if (!variables.Menu.always_display_menu)
+                {
+                    variables.Menu.menu_open = false;
+                }
             }
         }
 
@@ -89,15 +96,22 @@ namespace DuskHaxx
                 Loader.Unload();
             }
 
-            // Menu options
+            // Menu option toggle
             if (Input.GetKey(KeyCode.Insert))
             {
+                // Hackz
                 variables.CheatState.godmode_bool = ToggleVariable("1", variables.CheatState.godmode_bool);
                 variables.CheatState.aimbot_bool = ToggleVariable("2", variables.CheatState.aimbot_bool);
                 variables.CheatState.rapidfire_bool = ToggleVariable("3", variables.CheatState.rapidfire_bool);
                 variables.CheatState.unlimited_ammo_bool = ToggleVariable("4", variables.CheatState.unlimited_ammo_bool);
                 variables.CheatState.tracer_bool = ToggleVariable("5", variables.CheatState.tracer_bool);
-                variables.CheatState.player_pos_bool = ToggleVariable("0", variables.CheatState.player_pos_bool);
+                
+                // Misc
+                variables.CheatState.player_pos_bool = ToggleVariable("9", variables.CheatState.player_pos_bool);
+                variables.CheatState.player_fov_bool = ToggleVariable("0", variables.CheatState.player_fov_bool);
+
+                // Console
+                variables.Console.show_console = ToggleVariable("k", variables.Console.show_console);
             }
         }
 

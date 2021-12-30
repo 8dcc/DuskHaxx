@@ -9,8 +9,8 @@ namespace DuskHaxx
         {
             public static Vector2 screen_center = new Vector2((float)(Screen.width / 2), (float)(Screen.height / 2));
 
-            public static Quaternion targetRotation;
-            public static Quaternion lookAt;
+            //public static Quaternion targetRotation;
+            //public static Quaternion lookAt;
 
             //public static float old_xrotation, old_yrotation;
             public static Quaternion old_maincamera_rotation;
@@ -31,7 +31,7 @@ namespace DuskHaxx
                     // Apply and offset but its kinda trash if you change the fov
                     Vector3 anime_feet;
                     anime_feet.x = enemy.transform.position.x;
-                    anime_feet.y = enemy.transform.position.y - 1f;
+                    anime_feet.y = enemy.transform.position.y - 0.95f;
                     anime_feet.z = enemy.transform.position.z;
 
                     LocalVariables.enemyPos.Add(anime_feet);
@@ -68,14 +68,19 @@ namespace DuskHaxx
                     }
                 }
 
+                // Actual aimbot
                 if (best_target != new Vector3(0, 0, 0))
                 {
                     GameObject.Find("MainCamera").GetComponent<MyMouseLook>().enabled = false; // Disable player control
 
+                    /*
                     Vector3 direction = best_target - GameObject.Find("MainCamera").transform.position;
                     LocalVariables.targetRotation = Quaternion.LookRotation(direction);
                     LocalVariables.lookAt = Quaternion.RotateTowards(GameObject.Find("MainCamera").transform.rotation, LocalVariables.targetRotation, Time.deltaTime * 750);
                     GameObject.Find("MainCamera").transform.rotation = LocalVariables.lookAt;
+                    */
+                    MyMouseLook myMouseLook = (MyMouseLook)GameObject.Find("MainCamera").GetComponent(typeof(MyMouseLook));
+                    myMouseLook.transform.LookAt(best_target);
 
                     LocalVariables.aux_using_aimbot = true;
                 }
@@ -84,10 +89,9 @@ namespace DuskHaxx
                 GameObject.Find("MainCamera").GetComponent<MyMouseLook>().enabled = true; // Enable player control
 
                 // Restore old rotation
-                GameObject.Find("MainCamera").transform.rotation = LocalVariables.old_maincamera_rotation;
-
                 MyMouseLook myMouseLook = (MyMouseLook)GameObject.Find("MainCamera").GetComponent(typeof(MyMouseLook));
                 myMouseLook.transform.rotation = LocalVariables.old_mouselook_rotation;
+                GameObject.Find("MainCamera").transform.rotation = LocalVariables.old_maincamera_rotation;
 
                 LocalVariables.aux_using_aimbot = false;
             }
