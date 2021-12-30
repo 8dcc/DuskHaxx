@@ -7,7 +7,8 @@ namespace DuskHaxx
     {
         class LocalVariables
         {
-            public static int aimbot_fov = 40;
+            public static Vector2 screen_center = new Vector2((float)(Screen.width / 2), (float)(Screen.height / 2));
+
             public static Quaternion targetRotation;
             public static Quaternion lookAt;
 
@@ -40,8 +41,12 @@ namespace DuskHaxx
 
         public void OnGUI()
         {
-            if (variables.CheatState.aimbot_bool && Input.GetKey(KeyCode.Mouse1) && !variables.Menu.menu_open && LocalVariables.enemyPos.Count > 0)
+            if (variables.CheatState.aimbot_bool && !variables.Menu.menu_open &&
+                (Input.GetKey(variables.CheatSettings.aimbot_key1) || Input.GetKey(variables.CheatSettings.aimbot_key2)) && LocalVariables.enemyPos.Count > 0)
             {
+                // Draw fov
+                //ExtRender.DrawBox(LocalVariables.screen_center, new Vector2(200f, 200f), true);
+
                 // Store rotation before aimbot
                 if (!LocalVariables.aux_using_aimbot)
                 {
@@ -51,12 +56,13 @@ namespace DuskHaxx
                     LocalVariables.old_mouselook_rotation = myMouseLook_old.transform.rotation;
                 }
 
+                // Check if target is in fov and get the "closest"
                 Vector3 best_target = new Vector3(0,0,0);
                 foreach (Vector3 enemy in LocalVariables.enemyPos)
                 {
                     Vector3 pos_dif = enemy - FindObjectOfType<Camera>().transform.position;
                     Vector3 pos_dif_bt = best_target - FindObjectOfType<Camera>().transform.position;
-                    if (EnemyInFOV(GameObject.Find("MainCamera"), enemy) && (pos_dif.x < pos_dif_bt.x || pos_dif.z < pos_dif_bt.z))
+                    if (EnemyInFOV(GameObject.Find("MainCamera"), enemy))
                     {
                         best_target = enemy;
                     }
@@ -92,7 +98,7 @@ namespace DuskHaxx
             Vector3 targetDir = enemy_pos - GameObject.Find("MainCamera").transform.position;
             float angle = Vector3.Angle(targetDir, looker.transform.forward);
 
-            return (angle < LocalVariables.aimbot_fov);
+            return (angle < variables.CheatSettings.aimbot_fov);
         }
     }
 }
