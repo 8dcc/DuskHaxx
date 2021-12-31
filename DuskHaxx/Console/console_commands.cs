@@ -22,6 +22,7 @@ namespace DuskHaxx
         {
             ((MyControllerScript[])UnityEngine.Object.FindObjectsOfType(typeof(MyControllerScript)))[0].transform.position = new_position;
         }
+
         public static void SetPlayerHealth(float health)
         {
             if (health == 0f && variables.CheatState.godmode_bool)
@@ -35,6 +36,11 @@ namespace DuskHaxx
         public static void SetNoclipSpeed(float speed)
         {
             variables.CheatSettings.noclip_speed = speed;
+        }
+
+        public static void SetTracerDistance(float distance)
+        {
+            variables.CheatSettings.max_tracer_distance = distance;
         }
     }
 }

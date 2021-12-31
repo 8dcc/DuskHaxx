@@ -46,6 +46,7 @@ namespace DuskHaxx.variables
         public static bool draw_tracer_box_3d = false;
         public static float tracer_base_thickness = 2f;
         public static float tracer_box_3d_thickness = 2f;
+        public static float max_tracer_distance = 100f;  // 0f to disable max distance
 
         // Fov
         public static bool round_fov = false;  // Disabling this is recommended

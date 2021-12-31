@@ -30,6 +30,9 @@ namespace DuskHaxx
                 case "set_noclip_speed":
                     ConsoleCommands.SetNoclipSpeed(float.Parse(command_array[1]));
                     break;
+                case "set_tracer_distance":
+                    ConsoleCommands.SetTracerDistance(float.Parse(command_array[1]));
+                    break;
                 default:
                     break;
             }

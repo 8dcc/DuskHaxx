@@ -45,8 +45,9 @@ namespace DuskHaxx
                 foreach (Vector3 target in LocalVariables.enemyPos)
                 {
                     Vector3 w2s_enemy = camera.WorldToScreenPoint(target);
-                    
-                    if (w2s_enemy.z > -1)
+                    float distance_to_target = Vector3.Distance(FindObjectOfType<Camera>().transform.position, target);
+
+                    if (w2s_enemy.z > -1 && (variables.CheatSettings.max_tracer_distance == 0f || distance_to_target < variables.CheatSettings.max_tracer_distance))
                     {
                         NullsRenderer.DrawTracer(new Vector2(w2s_enemy.x, w2s_enemy.y), LocalVariables.colour, 1.5f, 2);
                         
@@ -99,7 +100,7 @@ namespace DuskHaxx
                         if (variables.CheatSettings.draw_tracer_distance)
                         {
                             Vector3 w2s_enemy_distance_pos = camera.WorldToScreenPoint(new Vector3(target.x, target.y + 0.2f, target.z));
-                            string distance_string = Vector3.Distance(FindObjectOfType<Camera>().transform.position, target).ToString("0");
+                            string distance_string = distance_to_target.ToString("0");
 
                             if (w2s_enemy_distance_pos.z > -1)
                             {
