@@ -26,6 +26,8 @@ Based on [CometVTwo](https://github.com/TheReal3rd/CometVTwo).
 
 ### Console commands (See todo)
 - `kill`: Suicide
+- `set_health [float]`: Change player's health.
+- `set_noclip_speed [float]`: Change the noclip speed multiplier.
 - `set_fov [float]`: Change CAMERA fov. Useful for tracers and shit.
 - `set_timescale [float]`: Change timescale.
 - `tp [x] [y] [z]`: Teleport player to Vector3. Y is the height.
