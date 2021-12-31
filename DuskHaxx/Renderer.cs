@@ -11,14 +11,12 @@ namespace DuskHaxx
 			{
 				Vector2 background_pos = new Vector2(position.x - 2f, position.y - 1f);
 				Vector2 background_size = new Vector2(size.x + 17f, size.y + 1f);
-				ExtRender.DrawBox(background_pos, background_size, new Color(0.22f, 0.22f, 0.23f, 0.8f));  // Background
-				ExtRender.DrawBoxOutline(background_pos, background_size.x, background_size.y, new Color(0.95f, 0f, 0f, 0.95f), 1f);
+				ExtRender.DrawBox(background_pos, background_size, variables.Menu.menu_background_color);  // Background
+				ExtRender.DrawBoxOutline(background_pos, background_size.x, background_size.y, variables.Menu.menu_border_color, 1f);  // Border
 
 				ExtRender.DrawString(position, label, new Color(0.95f, 0.95f, 0.95f), false);
-			}
-			else
-			{
-				ExtRender.DrawString(position, label, new Color(0.95f, 0f, 0f, 0.95f), false);
+			} else {
+				ExtRender.DrawString(position, label, variables.Menu.menu_border_color, false);
 			}
 		}
 		public static void DrawWatermark(Vector2 position, string label, bool background = true)
@@ -28,12 +26,12 @@ namespace DuskHaxx
 			{
 				Vector2 background_pos = new Vector2(position.x - 2f, position.y);
 				Vector2 background_size = new Vector2(size.x, size.y);
-				ExtRender.DrawBox(background_pos, background_size, new Color(0.22f, 0.22f, 0.23f, 0.8f));  // Background
-				ExtRender.DrawBoxOutline(background_pos, background_size.x, background_size.y, new Color(0.95f, 0f, 0f, 0.95f), 1f);
+				ExtRender.DrawBox(background_pos, background_size, variables.Menu.menu_background_color);  // Background
+				ExtRender.DrawBoxOutline(background_pos, background_size.x, background_size.y, variables.Menu.menu_border_color, 1f);  // Border
 
 				ExtRender.DrawString(position, label, new Color(0.95f, 0.95f, 0.95f), false);
 			} else {
-				ExtRender.DrawString(position, label, new Color(0.95f, 0f, 0f, 0.95f), false);
+				ExtRender.DrawString(position, label, variables.Menu.menu_border_color, false);
 			}
 		}
 		public static void DrawMenuBoolState(int index, Vector2 menu_pos, Vector2 menu_size, bool state)

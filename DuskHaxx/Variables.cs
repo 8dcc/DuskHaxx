@@ -6,8 +6,11 @@ namespace DuskHaxx.variables
     class Menu
     {
         // Menu settings and default states
-        public static string[] menu_entries_text = { "1. Godmode", "2. Aimbot (Test)", "3. Rapid fire", "4. Unlimited ammo", "5. Enemy ESP", "6. NoClip", "9. Position debug", "0. Fov debug" };
+        public static string[] menu_entries_text = { "1. Godmode", "2. Aimbot", "3. Rapid fire", "4. Unlimited ammo", "5. Enemy ESP", "6. NoClip", "9. Position debug", "0. Fov debug" };
         public static int menu_entries = menu_entries_text.Length;
+
+        public static Color menu_background_color = new Color(0.10f, 0.10f, 0.11f, 0.95f);
+        public static Color menu_border_color = new Color(0.95f, 0f, 0f, 0.95f);
 
         public static bool menu_open = false;
         public static bool always_display_menu = false, menu_box = true;

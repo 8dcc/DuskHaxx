@@ -2,9 +2,6 @@
 using UnityEngine;
 
 // TODO: Draw dusk's cursor on top of the menu OR remove the cursor when stopping the camera and use the system one
-// TODO: Fix tracers depending on the FOV (get the user's fov)
-// TODO: Godmode
-// TODO: Aimbot with move thing
 
 namespace DuskHaxx
 {
@@ -27,9 +24,8 @@ namespace DuskHaxx
                 // Menu background
                 Vector2 menu_pos = new Vector2(5f, 33f);
                 Vector2 menu_size = new Vector2(240f, 18f * variables.Menu.menu_entries + 6f);  // 18 height per element
-                Color menu_background_color = new Color(0.22f, 0.22f, 0.25f, 0.8f);
-                Color menu_border_color = new Color(0.95f, 0f, 0f, 0.95f);
-                NullsRenderer.DrawMenuBackground(variables.Menu.menu_box, menu_pos, menu_size, menu_background_color, menu_border_color);
+                
+                NullsRenderer.DrawMenuBackground(variables.Menu.menu_box, menu_pos, menu_size, variables.Menu.menu_background_color, variables.Menu.menu_border_color);
 
                 // Menu entries name (without state)
                 for (int n = 0; n < variables.Menu.menu_entries; n++)
