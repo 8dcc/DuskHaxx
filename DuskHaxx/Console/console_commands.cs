@@ -24,6 +24,10 @@ namespace DuskHaxx
         }
         public static void SetPlayerHealth(float health)
         {
+            if (health == 0f && variables.CheatState.godmode_bool)
+            {
+                variables.CheatState.godmode_bool = false;
+            }
             PlayerHealthManagement playerHealthManagement = (PlayerHealthManagement)GameObject.Find("Player").GetComponent(typeof(PlayerHealthManagement));
             playerHealthManagement.myhealth = health;
         }
