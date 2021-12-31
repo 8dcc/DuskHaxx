@@ -1,9 +1,9 @@
 # DuskHaxx
-**A useless mod for singleplayer dusk.**
-
-Did it because I was bored.
+**A useless mod for singleplayer dusk.** Did it because I was bored.
 
 Based on [CometVTwo](https://github.com/TheReal3rd/CometVTwo).
+
+Showcase: [Click me](https://www.youtube.com/watch?v=-FSogecKACY).
 
 ### Features
 - Godmode.
