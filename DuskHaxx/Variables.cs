@@ -42,6 +42,9 @@ namespace DuskHaxx.variables
         public static bool draw_tracer_box_3d = false;
         public static float tracer_box_3d_thickness = 2f;
 
+        // Fov
+        public static bool round_fov = false;  // Disabling this is recommended
+
         // Noclip
         public static float noclip_speed = 2f;
         public static KeyCode noclip_key = KeyCode.V;

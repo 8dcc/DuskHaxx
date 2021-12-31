@@ -8,7 +8,8 @@ namespace DuskHaxx
         class LocalVariables
         {
             public static string player_fov_string = "";
-            public static float fov_offset = 0.74f;
+            public static float fov_offset_round = 0.74f;
+            public static float fov_offset = 31f;
         }
 
         public void OnGUI()
@@ -17,9 +18,15 @@ namespace DuskHaxx
             {
                 if (ConsoleCommands.custom_fov == 0f)
                 {
-                    float slider_value = ((GameMenuButtonsScript)GameObject.Find("DasMenu").GetComponent(typeof(GameMenuButtonsScript))).LoadConfigFloat("fov") * LocalVariables.fov_offset;
-                    float rounded_value = (float)(Math.Round((double)slider_value, 0));
-                    FindObjectOfType<Camera>().fieldOfView = rounded_value; // -25? -31?
+                    if (variables.CheatSettings.round_fov)
+                    {
+                        float slider_value = ((GameMenuButtonsScript)GameObject.Find("DasMenu").GetComponent(typeof(GameMenuButtonsScript))).LoadConfigFloat("fov") * LocalVariables.fov_offset_round;
+                        float rounded_value = (float)(Math.Round((double)slider_value, 0));
+                        FindObjectOfType<Camera>().fieldOfView = rounded_value; // -25? -31?
+                    } else {
+                        FindObjectOfType<Camera>().fieldOfView = ((GameMenuButtonsScript)GameObject.Find("DasMenu").GetComponent(typeof(GameMenuButtonsScript))).LoadConfigFloat("fov") - LocalVariables.fov_offset; // -25? -31?
+                    }
+
                 } else {
                     FindObjectOfType<Camera>().fieldOfView = ConsoleCommands.custom_fov;
                 }
