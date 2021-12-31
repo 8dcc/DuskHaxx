@@ -61,7 +61,7 @@ namespace DuskHaxx.variables
         // Settings
         public static Vector2 console_size = new Vector2(500f, 22f);
         public static Vector2 console_position = new Vector2((float)(Screen.width / 2 - console_size.x/2), (float)(Screen.height - 130f));
-        public static bool console_background = false;
+        public static bool console_background = true;
 
         public static bool show_console = false;
     }
