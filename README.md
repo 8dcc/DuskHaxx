@@ -40,7 +40,7 @@ Class name   | `Loader`
 Method name  | `Init`
 
 ### Screenshots
-![Screenshot 1](images/screenshot4.png)
+![Screenshot 1](images/screenshot6.png)
 ![Screenshot 2](images/screenshot2.jpg)
 ![Screenshot 3](images/screenshot3.jpg)
 ![Screenshot 4 (Box ESP and tracers)](images/screenshot5.jpg)
