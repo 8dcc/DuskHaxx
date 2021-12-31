@@ -14,17 +14,17 @@ Showcase: [Click me](https://www.youtube.com/watch?v=-FSogecKACY).
 - NoClip.
 - Debug player position.
 - Debug player fov.
-- Console (See todo).
+- Console.
 
 ### How to use
 - Hold `Insert` to bring mouse and show the menu (depending on the settings).
 - `Insert` + `Number` to toggle options.
-- `Insert` + `k` to toggle console (See todo).
+- `Insert` + `k` to toggle console (exit with esc).
 - Hold `Mouse4` / `Mouse2` to aimbot (if the option is toggled).
 - `V` to toggle noclip (if the option is toggled).
 - `Delete` to exit.
 
-### Console commands (See todo)
+### Console commands
 - `kill`: Suicide
 - `set_health [float]`: Change player's health.
 - `set_tracer_distance [float]`: Change the maximum tracer distance (0 to turn off).
@@ -51,6 +51,6 @@ Method name  | `Init`
 ### Todo
 - ~~Fix tracer fov.~~
 - ~~Change movement direction with the aimbot.~~
-- Make console detect Enter / Escape when typing in the TextField.
+- ~~Make console detect Enter / Escape when typing in the TextField.~~
 - Draw dusk's cursor on top of the menu?
 - Clickable menu.
