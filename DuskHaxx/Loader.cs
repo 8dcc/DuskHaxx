@@ -11,6 +11,8 @@ namespace DuskHaxx
             // Main
             Loader.Load.AddComponent<Main>();
             Loader.Load.AddComponent<Console>();
+            Loader.Load.AddComponent<ConsoleCommands>();
+            Loader.Load.AddComponent<CommandProcessor>();
 
             // Hackz
             Loader.Load.AddComponent<Godmode>();
@@ -18,6 +20,7 @@ namespace DuskHaxx
             Loader.Load.AddComponent<RapidFire>();
             Loader.Load.AddComponent<InfAmmo>();
             Loader.Load.AddComponent<Tracers>();
+            Loader.Load.AddComponent<NoClip>();
 
             // Misc
             Loader.Load.AddComponent<DebugPlayerPos>();

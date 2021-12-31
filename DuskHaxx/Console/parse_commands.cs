@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine;
 
 namespace DuskHaxx
 {
-    class CommandProcessor
+    class CommandProcessor : MonoBehaviour
     {
         public static void ParseCommand(string command)
         {
@@ -20,6 +17,12 @@ namespace DuskHaxx
                     break;
                 case "set_timescale":
                     ConsoleCommands.ChangeTimescale(float.Parse(command_array[1]));
+                    break;
+                case "tp":
+                    ConsoleCommands.TeleportPlayer(new Vector3(float.Parse(command_array[1]), float.Parse(command_array[2]), float.Parse(command_array[3])));
+                    break;
+                case "kill":
+                    ConsoleCommands.SetPlayerHealth(0f);
                     break;
                 default:
                     break;

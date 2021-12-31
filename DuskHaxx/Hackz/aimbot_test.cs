@@ -10,7 +10,7 @@ namespace DuskHaxx
             public static List<Vector3> enemyPos = new List<Vector3>();
             public static Vector2 screen_center = new Vector2((float)(Screen.width / 2), (float)(Screen.height / 2));
 
-            public static Quaternion old_mouselook_rotation;
+            public static Quaternion old_mouselook_rotation, old_player_rotation;
             public static bool aux_using_aimbot = false;
         }
 
@@ -34,11 +34,13 @@ namespace DuskHaxx
             if (variables.CheatState.aimbot_bool && !variables.Menu.menu_open &&
                 (Input.GetKey(variables.CheatSettings.aimbot_key1) || Input.GetKey(variables.CheatSettings.aimbot_key2)) &&LocalVariables.enemyPos.Count > 0)
             {
-                // Store rotation before aimbot
-                if (!LocalVariables.aux_using_aimbot)
+                // Store rotation before aimbot if the setting is enabed
+                if (!LocalVariables.aux_using_aimbot && variables.CheatSettings.restore_rotation_after_aimbot)
                 {
                     MyMouseLook myMouseLook_old = (MyMouseLook)GameObject.Find("MainCamera").GetComponent(typeof(MyMouseLook));
                     LocalVariables.old_mouselook_rotation = myMouseLook_old.transform.rotation;
+
+                    LocalVariables.old_player_rotation = ((MyControllerScript[])UnityEngine.Object.FindObjectsOfType(typeof(MyControllerScript)))[0].transform.rotation;
                 }
 
                 // Check if target is in fov and get the "closest"
@@ -62,15 +64,22 @@ namespace DuskHaxx
                     MyMouseLook myMouseLook = (MyMouseLook)GameObject.Find("MainCamera").GetComponent(typeof(MyMouseLook));
                     myMouseLook.transform.LookAt(best_target);
 
+                    ((MyControllerScript[])UnityEngine.Object.FindObjectsOfType(typeof(MyControllerScript)))[0].transform.LookAt(best_target);
+
                     LocalVariables.aux_using_aimbot = true;
                 }            
             } else if (LocalVariables.aux_using_aimbot) {  // After we release alt
                 GameObject.Find("MainCamera").GetComponent<MyMouseLook>().enabled = true; // Enable player control
 
-                // Restore old rotation
-                MyMouseLook myMouseLook = (MyMouseLook)GameObject.Find("MainCamera").GetComponent(typeof(MyMouseLook));
-                myMouseLook.transform.rotation = LocalVariables.old_mouselook_rotation;
+                // Restore old rotation if the setting is enabled
+                if (variables.CheatSettings.restore_rotation_after_aimbot)
+                {
+                    MyMouseLook myMouseLook = (MyMouseLook)GameObject.Find("MainCamera").GetComponent(typeof(MyMouseLook));
+                    myMouseLook.transform.rotation = LocalVariables.old_mouselook_rotation;
 
+                    ((MyControllerScript[])UnityEngine.Object.FindObjectsOfType(typeof(MyControllerScript)))[0].transform.rotation = LocalVariables.old_player_rotation;
+                }
+                
                 LocalVariables.aux_using_aimbot = false;
             }
         }

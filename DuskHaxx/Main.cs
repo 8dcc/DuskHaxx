@@ -43,8 +43,9 @@ namespace DuskHaxx
                 NullsRenderer.DrawMenuBoolState(2, menu_pos, menu_size, variables.CheatState.rapidfire_bool);
                 NullsRenderer.DrawMenuBoolState(3, menu_pos, menu_size, variables.CheatState.unlimited_ammo_bool);
                 NullsRenderer.DrawMenuBoolState(4, menu_pos, menu_size, variables.CheatState.tracer_bool);
-                NullsRenderer.DrawMenuBoolState(5, menu_pos, menu_size, variables.CheatState.player_pos_bool);
-                NullsRenderer.DrawMenuBoolState(6, menu_pos, menu_size, variables.CheatState.player_fov_bool);
+                NullsRenderer.DrawMenuBoolState(5, menu_pos, menu_size, variables.CheatState.noclip_bool);
+                NullsRenderer.DrawMenuBoolState(6, menu_pos, menu_size, variables.CheatState.player_pos_bool);
+                NullsRenderer.DrawMenuBoolState(7, menu_pos, menu_size, variables.CheatState.player_fov_bool);
             }
 
             // Show cursor while holding insert
@@ -105,6 +106,7 @@ namespace DuskHaxx
                 variables.CheatState.rapidfire_bool = ToggleVariable("3", variables.CheatState.rapidfire_bool);
                 variables.CheatState.unlimited_ammo_bool = ToggleVariable("4", variables.CheatState.unlimited_ammo_bool);
                 variables.CheatState.tracer_bool = ToggleVariable("5", variables.CheatState.tracer_bool);
+                variables.CheatState.noclip_bool = ToggleVariable("6", variables.CheatState.noclip_bool);
                 
                 // Misc
                 variables.CheatState.player_pos_bool = ToggleVariable("9", variables.CheatState.player_pos_bool);

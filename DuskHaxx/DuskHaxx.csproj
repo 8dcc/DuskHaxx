@@ -54,6 +54,7 @@
     <Compile Include="Console\parse_commands.cs" />
     <Compile Include="Hackz\aimbot_test.cs" />
     <Compile Include="Hackz\godmode.cs" />
+    <Compile Include="Hackz\noclip.cs" />
     <Compile Include="Hackz\tracers.cs" />
     <Compile Include="Hackz\rapid_fire.cs" />
     <Compile Include="Hackz\unlimited_ammo.cs" />
