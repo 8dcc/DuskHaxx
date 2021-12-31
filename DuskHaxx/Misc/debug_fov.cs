@@ -16,26 +16,27 @@ namespace DuskHaxx
         {
             if (variables.CheatState.player_fov_bool)
             {
+                float slider_fov = ((GameMenuButtonsScript)GameObject.Find("DasMenu").GetComponent(typeof(GameMenuButtonsScript))).LoadConfigFloat("fov");
                 if (ConsoleCommands.custom_fov == 0f)
                 {
                     if (variables.CheatSettings.round_fov)
                     {
-                        float slider_value = ((GameMenuButtonsScript)GameObject.Find("DasMenu").GetComponent(typeof(GameMenuButtonsScript))).LoadConfigFloat("fov") * LocalVariables.fov_offset_round;
-                        float rounded_value = (float)(Math.Round((double)slider_value, 0));
+                        float slider_mult = slider_fov * LocalVariables.fov_offset_round;
+                        float rounded_value = (float)(Math.Round((double)slider_mult, 0));
                         FindObjectOfType<Camera>().fieldOfView = rounded_value; // -25? -31?
                     } else {
-                        FindObjectOfType<Camera>().fieldOfView = ((GameMenuButtonsScript)GameObject.Find("DasMenu").GetComponent(typeof(GameMenuButtonsScript))).LoadConfigFloat("fov") - LocalVariables.fov_offset; // -25? -31?
+                        FindObjectOfType<Camera>().fieldOfView = slider_fov - LocalVariables.fov_offset; // -25? -31?
                     }
 
                 } else {
                     FindObjectOfType<Camera>().fieldOfView = ConsoleCommands.custom_fov;
                 }
 
-                //var player_fov_info = GameObject.Find("MainCamera").transform.position;
-                //float player_fov_info = ((GameMenuButtonsScript)GameObject.Find("DasMenu").GetComponent(typeof(GameMenuButtonsScript))).LoadConfigFloat("fov");
                 float player_fov_info = FindObjectOfType<Camera>().fieldOfView;
 
                 LocalVariables.player_fov_string = "Fov: ";
+                LocalVariables.player_fov_string += slider_fov.ToString("0");
+                LocalVariables.player_fov_string += "/";
                 LocalVariables.player_fov_string += player_fov_info.ToString("0");
                 LocalVariables.player_fov_string += " ";
 
