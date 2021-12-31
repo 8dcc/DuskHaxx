@@ -27,6 +27,7 @@ Showcase: [Click me](https://www.youtube.com/watch?v=-FSogecKACY).
 ### Console commands (See todo)
 - `kill`: Suicide
 - `set_health [float]`: Change player's health.
+- `set_tracer_distance [float]`: Change the maximum tracer distance (0 to turn off).
 - `set_noclip_speed [float]`: Change the noclip speed multiplier.
 - `set_fov [float]`: Change CAMERA fov. Useful for tracers and shit.
 - `set_timescale [float]`: Change timescale.
