@@ -44,12 +44,12 @@ namespace DuskHaxx
                 }
 
                 // Check if target is in fov and get the "closest"
-                Vector3 best_target = new Vector3(0,0,0);
+                Vector3 best_target = LocalVariables.enemyPos[0];
                 foreach (Vector3 enemy in LocalVariables.enemyPos)
                 {
-                    Vector3 pos_dif = enemy - FindObjectOfType<Camera>().transform.position;
-                    Vector3 pos_dif_bt = best_target - FindObjectOfType<Camera>().transform.position;
-                    if (EnemyInFOV(GameObject.Find("MainCamera"), enemy))
+                    float pos_dif = Vector3.Distance(FindObjectOfType<Camera>().transform.position, enemy);
+                    float pos_dif_bt = Vector3.Distance(FindObjectOfType<Camera>().transform.position, best_target);
+                    if ( pos_dif + variables.CheatSettings.aimbot_closest_margin < pos_dif_bt && EnemyInFOV(GameObject.Find("MainCamera"), enemy) )
                     {
                         best_target = enemy;
                     }

@@ -24,6 +24,12 @@ namespace DuskHaxx
                 case "kill":
                     ConsoleCommands.SetPlayerHealth(0f);
                     break;
+                case "set_health":
+                    ConsoleCommands.SetPlayerHealth(float.Parse(command_array[1]));
+                    break;
+                case "set_noclip_speed":
+                    ConsoleCommands.SetNoclipSpeed(float.Parse(command_array[1]));
+                    break;
                 default:
                     break;
             }

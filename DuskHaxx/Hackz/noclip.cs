@@ -61,12 +61,12 @@ namespace DuskHaxx
                     playerPos += new Vector3((right.x / 10) * variables.CheatSettings.noclip_speed, right.y, 
                         (right.z / 10) * variables.CheatSettings.noclip_speed);
                 }
-                if (Input.GetKey(KeyCode.Space))
+                if (Input.GetKey(KeyCode.Space))  // Up
                 {
                     Vector3 up = script.transform.up;
                     playerPos += new Vector3(up.x, (up.y / 10) * variables.CheatSettings.noclip_speed, up.z);
                 }
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftControl))  // Down
                 {
                     Vector3 up = script.transform.up;
                     playerPos -= new Vector3(up.x, (up.y / 10) * variables.CheatSettings.noclip_speed, up.z);

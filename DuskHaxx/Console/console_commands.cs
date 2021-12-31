@@ -31,5 +31,10 @@ namespace DuskHaxx
             PlayerHealthManagement playerHealthManagement = (PlayerHealthManagement)GameObject.Find("Player").GetComponent(typeof(PlayerHealthManagement));
             playerHealthManagement.myhealth = health;
         }
+
+        public static void SetNoclipSpeed(float speed)
+        {
+            variables.CheatSettings.noclip_speed = speed;
+        }
     }
 }

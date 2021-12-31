@@ -36,13 +36,15 @@ namespace DuskHaxx.variables
         // Aimbot
         public static bool restore_rotation_after_aimbot = false;
         public static int aimbot_fov = 180;
+        public static float aimbot_closest_margin = 7f;  // If too low, might change targets too fast, recommended 3 to 10
         public static KeyCode aimbot_key1 = KeyCode.Mouse1;
         public static KeyCode aimbot_key2 = KeyCode.Mouse3;
 
         // Tracers
+        public static bool draw_tracer_distance = true;
         public static bool draw_tracer_base = true;
-        public static float tracer_base_thickness = 2f;
         public static bool draw_tracer_box_3d = false;
+        public static float tracer_base_thickness = 2f;
         public static float tracer_box_3d_thickness = 2f;
 
         // Fov
