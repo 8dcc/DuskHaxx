@@ -49,3 +49,5 @@ Method name  | `Init`
 - ~~Fix tracer fov.~~
 - ~~Change movement direction with the aimbot.~~
 - Make console detect Enter / Escape when typing in the TextField.
+- Draw dusk's cursor on top of the menu?
+- Clickable menu.
