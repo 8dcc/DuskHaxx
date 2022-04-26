@@ -24,13 +24,8 @@ namespace DuskHaxx
                         float slider_mult = slider_fov * LocalVariables.fov_offset_round;
                         float rounded_value = (float)(Math.Round((double)slider_mult, 0));
                         FindObjectOfType<Camera>().fieldOfView = rounded_value; // -25? -31?
-                    } else {
-                        FindObjectOfType<Camera>().fieldOfView = slider_fov - LocalVariables.fov_offset; // -25? -31?
-                    }
-
-                } else {
-                    FindObjectOfType<Camera>().fieldOfView = ConsoleCommands.custom_fov;
-                }
+                    } else FindObjectOfType<Camera>().fieldOfView = slider_fov - LocalVariables.fov_offset; // -25? -31?
+                } else FindObjectOfType<Camera>().fieldOfView = ConsoleCommands.custom_fov;
 
                 float player_fov_info = FindObjectOfType<Camera>().fieldOfView;
 
