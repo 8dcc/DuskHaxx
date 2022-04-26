@@ -11,15 +11,14 @@ namespace DuskHaxx
         {
             if (variables.CheatState.godmode_bool)
             {
-                if (aux_first_time)
-                {
-                    aux_first_time = false;
-                }
-             
+                if (aux_first_time) aux_first_time = false;
+
                 PlayerHealthManagement playerHealthManagement = (PlayerHealthManagement) GameObject.Find("Player").GetComponent(typeof(PlayerHealthManagement));
                 playerHealthManagement.myhealth = 1337f;
                 playerHealthManagement.myarmor = 1337f;
-            } else if (!aux_first_time) {  // restore normal health n shit
+            }
+            else if (!aux_first_time)       // Restore normal health n shit
+            {
                 PlayerHealthManagement playerHealthManagement = (PlayerHealthManagement)GameObject.Find("Player").GetComponent(typeof(PlayerHealthManagement));
                 playerHealthManagement.myhealth = 100f;
                 playerHealthManagement.myarmor = 100f;

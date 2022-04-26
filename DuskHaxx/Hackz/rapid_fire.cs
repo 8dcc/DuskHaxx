@@ -21,7 +21,9 @@ namespace DuskHaxx
                 attackScript = (AttackScript)GameObject.Find("WeaponAnimator").GetComponent(typeof(AttackScript));
                 attackScript.firespeed *= 3f;
                 attackScript.firespeedtimer = 300f;
-            } else {
+            }
+            else
+            {
                 if (!first_time_aux)
                 {
                     variables.CheatState.unlimited_ammo_bool = old_unlimited_ammo_bool;

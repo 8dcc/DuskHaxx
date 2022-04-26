@@ -31,8 +31,10 @@ namespace DuskHaxx
 
         public void OnGUI()
         {
-            if (variables.CheatState.aimbot_bool && !variables.Menu.menu_open &&
-                (Input.GetKey(variables.CheatSettings.aimbot_key1) || Input.GetKey(variables.CheatSettings.aimbot_key2)) &&LocalVariables.enemyPos.Count > 0)
+            if (variables.CheatState.aimbot_bool &&
+                    !variables.Menu.menu_open &&
+                    (Input.GetKey(variables.CheatSettings.aimbot_key1) || Input.GetKey(variables.CheatSettings.aimbot_key2)) &&
+                    LocalVariables.enemyPos.Count > 0)
             {
                 // Store rotation before aimbot if the setting is enabed
                 if (!LocalVariables.aux_using_aimbot && variables.CheatSettings.restore_rotation_after_aimbot)
@@ -50,15 +52,13 @@ namespace DuskHaxx
                     float pos_dif = Vector3.Distance(FindObjectOfType<Camera>().transform.position, enemy);
                     float pos_dif_bt = Vector3.Distance(FindObjectOfType<Camera>().transform.position, best_target);
                     if ( pos_dif + variables.CheatSettings.aimbot_closest_margin < pos_dif_bt && EnemyInFOV(GameObject.Find("MainCamera"), enemy) )
-                    {
                         best_target = enemy;
-                    }
                 }
 
                 // Actual aimbot
                 if (best_target != new Vector3(0, 0, 0))
                 {
-                    GameObject.Find("MainCamera").GetComponent<MyMouseLook>().enabled = false; // Disable player control
+                    GameObject.Find("MainCamera").GetComponent<MyMouseLook>().enabled = false;  // Disable player control
 
                     // Look at target
                     MyMouseLook myMouseLook = (MyMouseLook)GameObject.Find("MainCamera").GetComponent(typeof(MyMouseLook));
@@ -68,8 +68,10 @@ namespace DuskHaxx
 
                     LocalVariables.aux_using_aimbot = true;
                 }            
-            } else if (LocalVariables.aux_using_aimbot) {  // After we release alt
-                GameObject.Find("MainCamera").GetComponent<MyMouseLook>().enabled = true; // Enable player control
+            }
+            else if (LocalVariables.aux_using_aimbot)   // After we release alt
+            {
+                GameObject.Find("MainCamera").GetComponent<MyMouseLook>().enabled = true;       // Enable player control
 
                 // Restore old rotation if the setting is enabled
                 if (variables.CheatSettings.restore_rotation_after_aimbot)
@@ -79,7 +81,7 @@ namespace DuskHaxx
 
                     ((MyControllerScript[])UnityEngine.Object.FindObjectsOfType(typeof(MyControllerScript)))[0].transform.rotation = LocalVariables.old_player_rotation;
                 }
-                
+
                 LocalVariables.aux_using_aimbot = false;
             }
         }

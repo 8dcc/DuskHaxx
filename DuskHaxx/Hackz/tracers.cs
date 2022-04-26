@@ -50,7 +50,7 @@ namespace DuskHaxx
                     if (w2s_enemy.z > -1 && (variables.CheatSettings.max_tracer_distance == 0f || distance_to_target < variables.CheatSettings.max_tracer_distance))
                     {
                         NullsRenderer.DrawTracer(new Vector2(w2s_enemy.x, w2s_enemy.y), LocalVariables.colour, 1.5f, 2);
-                        
+
                         // Draw tracer X base
                         if (variables.CheatSettings.draw_tracer_base || variables.CheatSettings.draw_tracer_box_3d)
                         {
@@ -63,9 +63,9 @@ namespace DuskHaxx
                             if (w2s_enemy_base_x1.z > -1 && w2s_enemy_base_z1.z > -1 && w2s_enemy_base_x2.z > -1 && w2s_enemy_base_z2.z > -1)
                             {
                                 ExtRender.DrawLine(new Vector2(w2s_enemy_base_x1.x, (float)Screen.height - w2s_enemy_base_x1.y),
-                                    new Vector2(w2s_enemy_base_x2.x, (float)Screen.height - w2s_enemy_base_x2.y), LocalVariables.colour, variables.CheatSettings.tracer_base_thickness);
+                                        new Vector2(w2s_enemy_base_x2.x, (float)Screen.height - w2s_enemy_base_x2.y), LocalVariables.colour, variables.CheatSettings.tracer_base_thickness);
                                 ExtRender.DrawLine(new Vector2(w2s_enemy_base_z1.x, (float)Screen.height - w2s_enemy_base_z1.y),
-                                    new Vector2(w2s_enemy_base_z2.x, (float)Screen.height - w2s_enemy_base_z2.y), LocalVariables.colour, variables.CheatSettings.tracer_base_thickness);
+                                        new Vector2(w2s_enemy_base_z2.x, (float)Screen.height - w2s_enemy_base_z2.y), LocalVariables.colour, variables.CheatSettings.tracer_base_thickness);
 
                                 // Draw "tracer" box 3d
                                 if (variables.CheatSettings.draw_tracer_box_3d)
@@ -79,19 +79,19 @@ namespace DuskHaxx
                                     {
                                         // Upper X
                                         ExtRender.DrawLine(new Vector2(w2s_enemy_top_x1.x, (float)Screen.height - w2s_enemy_top_x1.y),
-                                        new Vector2(w2s_enemy_top_x2.x, (float)Screen.height - w2s_enemy_top_x2.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
+                                                new Vector2(w2s_enemy_top_x2.x, (float)Screen.height - w2s_enemy_top_x2.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
                                         ExtRender.DrawLine(new Vector2(w2s_enemy_top_z1.x, (float)Screen.height - w2s_enemy_top_z1.y),
-                                            new Vector2(w2s_enemy_top_z2.x, (float)Screen.height - w2s_enemy_top_z2.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
+                                                new Vector2(w2s_enemy_top_z2.x, (float)Screen.height - w2s_enemy_top_z2.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
 
                                         // 3d box walls
                                         ExtRender.DrawLine(new Vector2(w2s_enemy_base_x1.x, (float)Screen.height - w2s_enemy_base_x1.y),
-                                            new Vector2(w2s_enemy_top_x1.x, (float)Screen.height - w2s_enemy_top_x1.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
+                                                new Vector2(w2s_enemy_top_x1.x, (float)Screen.height - w2s_enemy_top_x1.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
                                         ExtRender.DrawLine(new Vector2(w2s_enemy_base_x2.x, (float)Screen.height - w2s_enemy_base_x2.y),
-                                            new Vector2(w2s_enemy_top_x2.x, (float)Screen.height - w2s_enemy_top_x2.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
+                                                new Vector2(w2s_enemy_top_x2.x, (float)Screen.height - w2s_enemy_top_x2.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
                                         ExtRender.DrawLine(new Vector2(w2s_enemy_base_z1.x, (float)Screen.height - w2s_enemy_base_z1.y),
-                                            new Vector2(w2s_enemy_top_z1.x, (float)Screen.height - w2s_enemy_top_z1.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
+                                                new Vector2(w2s_enemy_top_z1.x, (float)Screen.height - w2s_enemy_top_z1.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
                                         ExtRender.DrawLine(new Vector2(w2s_enemy_base_z2.x, (float)Screen.height - w2s_enemy_base_z2.y),
-                                            new Vector2(w2s_enemy_top_z2.x, (float)Screen.height - w2s_enemy_top_z2.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
+                                                new Vector2(w2s_enemy_top_z2.x, (float)Screen.height - w2s_enemy_top_z2.y), LocalVariables.colour, variables.CheatSettings.tracer_box_3d_thickness);
                                     }  // end of 3d box z check
                                 }  // end of 3d box
                             }  // end of X base z check
@@ -105,13 +105,15 @@ namespace DuskHaxx
                             if (w2s_enemy_distance_pos.z > -1)
                             {
                                 ExtRender.DrawString(new Vector2(w2s_enemy_distance_pos.x, (float)Screen.height - w2s_enemy_distance_pos.y),
-                                    distance_string, variables.Menu.menu_border_color);
+                                        distance_string, variables.Menu.menu_border_color);
                             }  // end of w2s_enemy_distance_pos z check
                         }  // end of draw_tracer_distance check
                     }  // end of w2s_enemy z check
                 }  // end of foreach enemy
 
-            } else if (!LocalVariables.aux_first_time) {  // if tracers are toggled off
+            }
+            else if (!LocalVariables.aux_first_time)        // If tracers are toggled off
+            {
                 variables.CheatState.player_fov_bool = LocalVariables.old_fov_bool;
                 LocalVariables.aux_first_time = true;
             }

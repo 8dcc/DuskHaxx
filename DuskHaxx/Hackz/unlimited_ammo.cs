@@ -18,7 +18,9 @@ namespace DuskHaxx
                     selectionScript.ammoinventory[i] = 420;
                 }
                 aux_ammo_bool = true;
-            } else if (aux_ammo_bool) {
+            }
+            else if (aux_ammo_bool)
+            {
                 for (int i = 0; i != selectionScript.ammoinventory.Length; i++)
                 {
                     selectionScript.ammoinventory[i] = selectionScript.maxammo[i];
