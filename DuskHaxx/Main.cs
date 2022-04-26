@@ -24,7 +24,7 @@ namespace DuskHaxx
                 // Menu background
                 Vector2 menu_pos = new Vector2(5f, 33f);
                 Vector2 menu_size = new Vector2(240f, 18f * variables.Menu.menu_entries + 6f);  // 18 height per element
-                
+
                 NullsRenderer.DrawMenuBackground(variables.Menu.menu_box, menu_pos, menu_size, variables.Menu.menu_background_color, variables.Menu.menu_border_color);
 
                 // Menu entries name (without state)
@@ -78,20 +78,14 @@ namespace DuskHaxx
                 MyMouseLook myMouseLook = (MyMouseLook)GameObject.Find("MainCamera").GetComponent(typeof(MyMouseLook));
                 myMouseLook.xRotation = LocalVariables.old_xrotation;
                 myMouseLook.yRotation = LocalVariables.old_yrotation;
-                if (!variables.Menu.always_display_menu)
-                {
-                    variables.Menu.menu_open = false;
-                }
+                if (!variables.Menu.always_display_menu) variables.Menu.menu_open = false;
             }
         }
 
         public void Update()
         {
             // Unload cheat
-            if (Input.GetKeyDown(KeyCode.Delete))
-            {
-                Loader.Unload();
-            }
+            if (Input.GetKeyDown(KeyCode.Delete)) Loader.Unload();
 
             // Menu option toggle
             if (Input.GetKey(KeyCode.Insert))
@@ -103,7 +97,7 @@ namespace DuskHaxx
                 variables.CheatState.unlimited_ammo_bool = ToggleVariable("4", variables.CheatState.unlimited_ammo_bool);
                 variables.CheatState.tracer_bool = ToggleVariable("5", variables.CheatState.tracer_bool);
                 variables.CheatState.noclip_bool = ToggleVariable("6", variables.CheatState.noclip_bool);
-                
+
                 // Misc
                 variables.CheatState.player_pos_bool = ToggleVariable("9", variables.CheatState.player_pos_bool);
                 variables.CheatState.player_fov_bool = ToggleVariable("0", variables.CheatState.player_fov_bool);
@@ -115,13 +109,7 @@ namespace DuskHaxx
 
         public static bool ToggleVariable(string toggle_key, bool bool_to_toggle)
         {
-            if (Input.GetKeyDown(toggle_key))
-            {
-                return !bool_to_toggle;
-            } else {
-                return bool_to_toggle;
-            }
-
+            return (Input.GetKeyDown(toggle_key)) ? !bool_to_toggle : bool_to_toggle;
         }
     }
 }
