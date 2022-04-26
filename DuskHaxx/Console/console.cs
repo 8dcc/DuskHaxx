@@ -22,10 +22,7 @@ namespace DuskHaxx
             // Check if the user presses enter
             if (variables.Console.show_console && (Event.current.keyCode == KeyCode.Return || Event.current.keyCode == KeyCode.Escape))
             {
-                if (LocalVariables.console_input != "")
-                {
-                    CommandProcessor.ParseCommand(LocalVariables.console_input);
-                }
+                if (LocalVariables.console_input != "") CommandProcessor.ParseCommand(LocalVariables.console_input);
                 variables.Console.show_console = false;
             }
         }
@@ -47,7 +44,7 @@ namespace DuskHaxx
 
                 // Background
                 NullsRenderer.DrawMenuBackground(variables.Console.console_background, variables.Console.console_position, variables.Console.console_size,
-                    variables.Menu.menu_background_color, variables.Menu.menu_border_color, 1f);
+                        variables.Menu.menu_background_color, variables.Menu.menu_border_color, 1f);
 
                 // Background text if no text
                 if (LocalVariables.console_input == "")
@@ -64,7 +61,9 @@ namespace DuskHaxx
                 LocalVariables.console_input = GUI.TextField(LocalVariables.input_field_rect, LocalVariables.console_input, 255);
                 GUI.FocusControl("ConsoleField");
 
-            } else if (LocalVariables.aux_openconsole) { // After we close the console (pressing enter or the toggle console hotkey)
+            }
+            else if (LocalVariables.aux_openconsole)
+            { // After we close the console (pressing enter or the toggle console hotkey)
                 Time.timeScale = LocalVariables.old_timescale;
                 LocalVariables.aux_openconsole = false;
             }
