@@ -49,8 +49,9 @@ Method name  | `Init`
 ![Screenshot 4 (Box ESP and tracers)](images/screenshot5.jpg)
 
 ### Todo
-- ~~Fix tracer fov.~~
-- ~~Change movement direction with the aimbot.~~
-- ~~Make console detect Enter / Escape when typing in the TextField.~~
-- Draw dusk's cursor on top of the menu?
-- Clickable menu.
+- [X] Fix tracer fov
+- [X] Change movement direction with the aimbot
+- [X] Make console detect Enter / Escape when typing in the TextField
+- [ ] Clean the code!
+- [ ] Draw dusk's cursor on top of the menu?
+- [ ] Clickable menu
