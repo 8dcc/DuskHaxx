@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 
-namespace DuskHaxx
-{
-    public class Loader
-    {
-        public static void Init()
-        {
+namespace DuskHaxx {
+    public class Loader {
+        public static void Init() {
             Loader.Load = new GameObject();
 
             // Main
@@ -29,13 +26,11 @@ namespace DuskHaxx
             UnityEngine.Object.DontDestroyOnLoad(Loader.Load);
         }
 
-        public static void Unload()
-        {
+        public static void Unload() {
             _Unload();
         }
 
-        private static void _Unload()
-        {
+        private static void _Unload() {
             GameObject.Destroy(Load);
         }
 
