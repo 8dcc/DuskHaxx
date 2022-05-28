@@ -34,10 +34,7 @@ namespace DuskHaxx
         }
         public static void DrawMenuBoolState(int index, Vector2 menu_pos, Vector2 menu_size, bool state)
         {
-            if (state)
-            {
-                ExtRender.DrawString(new Vector2(menu_pos.x + menu_size.x - 23f, menu_pos.y + 18 * index), "ON", Color.green, false);
-            }
+            if (state) ExtRender.DrawString(new Vector2(menu_pos.x + menu_size.x - 23f, menu_pos.y + 18 * index), "ON", Color.green, false);
             else ExtRender.DrawString(new Vector2(menu_pos.x + menu_size.x - 30f, menu_pos.y + 18 * index), "OFF", Color.red, false);
         }
         public static void DrawMenuBackground(bool enabled, Vector2 position, Vector2 size, Color background_color, Color border_color, float border_thickness = 1f )
@@ -61,8 +58,7 @@ namespace DuskHaxx
                 case 2: // Bottom
                     ExtRender.DrawLine(new Vector2((float)(Screen.width / 2), (float)(Screen.height)), new Vector2(w2s_target.x, (float)Screen.height - w2s_target.y), colour, thickness);
                     break;
-                default:
-                    break;
+                default: break;
             }
         }
     }
