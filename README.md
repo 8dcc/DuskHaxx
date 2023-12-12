@@ -3,8 +3,6 @@
 
 Based on [CometVTwo](https://github.com/TheReal3rd/CometVTwo).
 
-Showcase: [Click me](https://www.youtube.com/watch?v=-FSogecKACY).
-
 ### Features
 - Godmode.
 - Aimbot.
